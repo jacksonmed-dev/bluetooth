@@ -32,8 +32,8 @@ def client_connect():
            data = client_sock.recv(1024)
            if len(data) == 0: break
            print("received [%s]" % data)
-           print("get ip: " + get_ip())
-           client_sock.send(get_ip())
+           #print("get ip: " + get_ip())
+           #client_sock.send(get_ip())
     except IOError:
        pass
     
