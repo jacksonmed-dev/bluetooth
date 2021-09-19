@@ -29,15 +29,18 @@ def client_connect():
     client_sock, client_info = server_sock.accept()
     print("Accepted connection from ", client_info)
     client_sock.send(get_ip())
-    try:
-        while True:
-            data = client_sock.recv(1024)
-            if len(data) == 0: break
-            print("received [%s]" % data)
-            # print("get ip: " + get_ip())
-            client_sock.send(bytes("Hello Back", "utf-8"))
-    except IOError:
-        pass
+    while True:
+        client_sock.send(bytes("Hello Back", "utf-8"))
+        time.sleep(5)
+    # try:
+    #     while True:
+    #         data = client_sock.recv(1024)
+    #         if len(data) == 0: break
+    #         print("received [%s]" % data)
+    #         # print("get ip: " + get_ip())
+    #         client_sock.send(bytes("Hello Back", "utf-8"))
+    # except IOError:
+    #     pass
 
 
 server_sock = BluetoothSocket(RFCOMM)
